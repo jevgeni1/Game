@@ -14,6 +14,8 @@ import java.util.Scanner;
  */
 public class Game {
 
+    private static int attempt;
+
     /**
      * @param args the command line arguments
      */
@@ -22,13 +24,23 @@ public class Game {
         int num = random.nextInt(5-0+1)+0;
         System.out.println("Programma zagadala tsislo ot 0 do 5, otgadai:");
         Scanner scanner = new Scanner(System.in);
-        int userNum = scanner.nextInt();
-        if(num == userNum) {
-            System.out.println("Ura, ty vyigral!");
-        }else{
-            System.out.println("Ty proigral :(, zadumano tsislo: " + num);
-        }
-        
-    }
+        int attemp = 0;
+        do{
+            int userNum = scanner.nextInt();
+            if(num == userNum) {
+                System.out.println("Ura, ty vyigral!");
+                break;
+            }else{
+                if (attempt < 2){
+                    System.out.println("Ne pravilno, poprobyi eshjo raz:");
+                }else{
+                     System.out.println("Ty proigral :(, zadumano tsislo: " + num);
+                }    
+            }
+            attempt++;        
+        }while(attempt < 3 );
+            
+    }    
+    
     
 }
